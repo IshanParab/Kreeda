@@ -1,1 +1,8 @@
-{}
+{
+  "dependencies": {
+    "string-similarity": "^4.0.4"
+  },
+  "devDependencies": {
+    "@types/string-similarity": "^4.0.2"
+  }
+}
