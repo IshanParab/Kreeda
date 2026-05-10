@@ -56,8 +56,14 @@ export async function refreshNewsCache() {
 
   if (newsApiKey) {
     try {
+      const params = new URLSearchParams({
+        country: "in",
+        category: "sports",
+        pageSize: "20",
+        apiKey: newsApiKey,
+      });
       const newsRes = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=in&category=sports&pageSize=20&apiKey=${newsApiKey}`,
+        `https://newsapi.org/v2/top-headlines?${params.toString()}`,
         { cache: "no-store" }
       );
       const newsData = (await newsRes.json()) as { articles?: NewsApiArticle[] };

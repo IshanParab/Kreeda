@@ -1,6 +1,8 @@
 import { SPORT_KEYWORDS } from "@/lib/sportsKeywords";
 import { compareTwoStrings } from "string-similarity";
 
+const DUPLICATE_TITLE_THRESHOLD = 0.82;
+
 export function detectSport(text: string): string {
   const normalized = text.toLowerCase();
   let bestSport = "General";
@@ -21,5 +23,8 @@ export function detectSport(text: string): string {
 }
 
 export function isDuplicateTitle(a: string, b: string): boolean {
-  return compareTwoStrings(a.toLowerCase(), b.toLowerCase()) >= 0.82;
+  return (
+    compareTwoStrings(a.toLowerCase(), b.toLowerCase()) >=
+    DUPLICATE_TITLE_THRESHOLD
+  );
 }
