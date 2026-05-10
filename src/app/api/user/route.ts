@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import dbConnect from "@/lib/mongoose";
 import User from "@/models/User";
 
@@ -15,7 +15,7 @@ export async function GET() {
     const user = await User.findOne({ email: session.user.email });
 
     return NextResponse.json(user);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function Onboarding() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -62,7 +62,7 @@ export default function Onboarding() {
           Welcome to Kreeda
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
-          Let's personalize your journey. Step {step} of 5
+          Let&apos;s personalize your journey. Step {step} of 5
         </p>
       </div>
 
@@ -168,7 +168,7 @@ export default function Onboarding() {
             <div>
               <h3 className="text-lg font-medium mb-4">Ready to Generate Your Plan</h3>
               <p className="text-sm text-gray-600">
-                We'll use our AI coach to generate a personalized 14-day training plan based on your stats.
+                We&apos;ll use our AI coach to generate a personalized 14-day training plan based on your stats.
               </p>
               {formData.height && formData.weight && (
                 <p className="mt-4 font-medium text-indigo-600">

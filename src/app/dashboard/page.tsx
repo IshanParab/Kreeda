@@ -6,9 +6,14 @@ import { useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 
 export default function Dashboard() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
-  const [userData, setUserData] = useState<any>(null);
+  const [userData, setUserData] = useState<{
+    bmi?: number;
+    experienceLevel?: string;
+    sportPreferences?: string[];
+    trainingPlan?: string;
+  } | null>(null);
 
   useEffect(() => {
     if (status === "unauthenticated") {

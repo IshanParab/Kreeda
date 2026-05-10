@@ -4,6 +4,7 @@ export interface IUser extends Document {
   email: string;
   name?: string;
   image?: string;
+  isAdmin?: boolean;
   createdAt: Date;
   updatedAt: Date;
   // Onboarding fields
@@ -22,6 +23,7 @@ const UserSchema: Schema = new Schema(
     email: { type: String, required: true, unique: true },
     name: { type: String },
     image: { type: String },
+    isAdmin: { type: Boolean, default: false },
 
     age: { type: Number },
     height: { type: Number },

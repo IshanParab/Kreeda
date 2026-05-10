@@ -9,7 +9,9 @@ Kreeda is an AI-powered sports training and community platform designed to help 
 - **Personalized Training Plans:** Automatically calculates BMI and utilizes the Google Gemini API to generate customized 14-day training plans.
 - **Dashboard:** A central hub to view your profile details and your dynamically generated Markdown training plan.
 - **Local & National News Feed:** Aggregates top sports headlines from NewsAPI and local Goa sports/event updates via RSS feeds.
+- **Automated News Refresh:** Runs a scheduled refresh every 2 hours with deduplication and sport-wise tagging.
 - **Schemes & Verification:** Direct links to apply for national initiatives like Khelo India and SAI Schemes, complete with a mocked DigiLocker verification flow for simulated eligibility checks.
+- **Admin Dashboard:** Admin-only competition manager with create/delete workflows and optional notifications.
 
 ## Tech Stack
 
@@ -18,7 +20,7 @@ Kreeda is an AI-powered sports training and community platform designed to help 
 - **Database:** MongoDB via Mongoose
 - **Authentication:** NextAuth.js (Google Provider)
 - **AI Integration:** Google Gen AI SDK (`@google/genai`)
-- **Other Utilities:** `rss-parser` for feeds, `react-markdown` for content rendering
+- **Other Utilities:** `rss-parser`, `react-markdown`, `node-cron`, `string-similarity`, `nodemailer`
 
 ## Prerequisites
 
@@ -65,10 +67,21 @@ You will also need valid API keys for:
    # News API
    NEWS_API_KEY=your_news_api_key
 
-   # NextAuth
-   NEXTAUTH_SECRET=a_super_secret_key_for_kreeda
-   NEXTAUTH_URL=http://localhost:3000
-   ```
+    # NextAuth
+    NEXTAUTH_SECRET=a_super_secret_key_for_kreeda
+    NEXTAUTH_URL=http://localhost:3000
+
+    # Admin access
+    ADMIN_EMAILS=admin@example.com
+
+    # Optional notifications
+    NOTIFICATION_TO_EMAILS=committee@example.com
+    SMTP_HOST=smtp.example.com
+    SMTP_PORT=587
+    SMTP_USER=smtp_username
+    SMTP_PASS=smtp_password
+    SMTP_FROM=kreeda@example.com
+    ```
 
 4. **Run the development server:**
 

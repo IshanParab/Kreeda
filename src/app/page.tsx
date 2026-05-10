@@ -10,7 +10,6 @@ export default function Home() {
 
   useEffect(() => {
     if (status === "authenticated") {
-      // @ts-ignore
       if (session?.user?.hasCompletedOnboarding) {
         router.push("/dashboard");
       } else {

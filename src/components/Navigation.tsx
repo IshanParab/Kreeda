@@ -6,7 +6,7 @@ import { signOut, useSession } from "next-auth/react";
 
 export function Navigation() {
   const pathname = usePathname();
-  const { status } = useSession();
+  const { status, data: session } = useSession();
 
   if (status !== "authenticated") return null;
 
@@ -14,6 +14,7 @@ export function Navigation() {
     { href: "/dashboard", label: "Dashboard" },
     { href: "/news", label: "News" },
     { href: "/schemes", label: "Schemes" },
+    ...(session?.user?.isAdmin ? [{ href: "/admin", label: "Admin" }] : []),
   ];
 
   return (
